@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 using dincdev._Main.Scripts.Operations;
 
 namespace dincdev
@@ -23,9 +24,14 @@ namespace dincdev
                 return;
             }
 
-            cube.transform.position = area.PlacementPosition.position;
-            area.IsAreaOccupied = true;
-            area.CubeOfArea = cube;
+            Sequence seq = DOTween.Sequence();
+            seq.Append(cube.transform.DOJump(area.PlacementPosition.position, 3, 1, 0.5f).OnComplete(() =>
+            {
+                cube.transform.position = area.PlacementPosition.position;
+                area.IsAreaOccupied = true;
+                area.CubeOfArea = cube;
+            }));
+            seq.Join(cube.transform.DORotate(Vector3.up * 180, 0.5f));
 
             CheckPlacedCubesToMerge();
         }
