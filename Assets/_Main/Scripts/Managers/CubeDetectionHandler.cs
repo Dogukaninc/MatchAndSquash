@@ -10,6 +10,7 @@ namespace dincdev
     {
         private Ray _ray;
         private Camera _mainCamera;
+        private PlacementAreaHandler _placementAreaHandler;
 
         private void OnEnable()
         {
@@ -18,6 +19,7 @@ namespace dincdev
 
         void Start()
         {
+            _placementAreaHandler = PlacementAreaHandler.Instance;
         }
 
         void Update()
@@ -37,20 +39,8 @@ namespace dincdev
                 if (cube != null && !cube.IsPlaced)
                 {
                     cube.IsPlaced = true;
-                    if (cube.CubeTag == "BlueCube")
-                    {
-                        Debug.Log("B");
-                    }
-                    else if (cube.CubeTag == "RedCube")
-                    {
-                        Debug.Log("R");
-                    }
-                    else if (cube.CubeTag == "OrangeCube")
-                    {
-                        Debug.Log("O");
-                    }
-
                     PlacementAreaHandler.Instance.MoveCubeToArea(cube);
+                    GameController.Instance.UpdateMoveCount();
                 }
             }
         }

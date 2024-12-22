@@ -16,14 +16,6 @@ namespace dincdev
             Debug.Log(CubeTag);
         }
 
-        void Start()
-        {
-        }
-
-        void Update()
-        {
-        }
-
         private void TypeSetter()
         {
             switch (CubeType)
