@@ -58,8 +58,7 @@ namespace dincdev
             for (int i = 0; i < placementAreaCount; i++)
             {
                 var placementHolder = Instantiate(placementAreaPrefab, _placementAreaHandler.transform);
-                placementHolder.transform.position = new Vector3(_placementAreaHandler.transform.position.x + i + placementOffset, _placementAreaHandler.transform.position.y, _placementAreaHandler.transform.position.z);
-
+                placementHolder.transform.position = new Vector3(_placementAreaHandler.transform.position.x + placementOffset * i, _placementAreaHandler.transform.position.y, _placementAreaHandler.transform.position.z);
                 PlacementArea placementArea = new PlacementArea();
                 placementArea.CubeOfArea = null;
                 placementArea.IsAreaOccupied = false;

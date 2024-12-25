@@ -15,6 +15,12 @@ namespace dincdev
 
         public List<Cube> cubesOfLevel = new();
 
+        public override void Awake()
+        {
+            base.Awake();
+            Application.targetFrameRate = 60;
+        }
+
         private void Start()
         {
             MoveCountText.text = MoveCountForPlayer.ToString();
