@@ -15,7 +15,6 @@ namespace dincdev
 
         [Header("Cube Counts")]
         [SerializeField] private int redCubeCount;
-
         [SerializeField] private int blueCubeCount;
         [SerializeField] private int orangeCubeCount;
 
@@ -28,35 +27,29 @@ namespace dincdev
             SetCubes();
         }
 
-        private void SetCubes() //TODO - indexteki prefab'in tipini bilmediği için elle atamak zorunda kaldım.
+        private void SetCubes()
         {
-            for (int i = 0; i < cubePrefabs.Count; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        SpawnCube(redCubeCount, i);
-                        break;
-                    case 1:
-                        SpawnCube(blueCubeCount, i);
-                        break;
-                    case 2:
-                        SpawnCube(orangeCubeCount, i);
-                        break;
-                }
-            }
+            // int totalCubes = redCubeCount + blueCubeCount + orangeCubeCount;
+            int currentCubeIndex = 0;
+
+            SpawnCube(redCubeCount, 0, ref currentCubeIndex);
+            SpawnCube(blueCubeCount, 1, ref currentCubeIndex);
+            SpawnCube(orangeCubeCount, 2, ref currentCubeIndex);
         }
 
-        private void SpawnCube(int desiredCount, int prefabIndex)
+        private void SpawnCube(int desiredCount, int prefabIndex, ref int currentCubeIndex)
         {
             for (int i = 0; i < desiredCount; i++)
             {
                 var cube = Instantiate(cubePrefabs[prefabIndex], transform.position, Quaternion.identity);
                 GameController.Instance.cubesOfLevel.Add(cube.GetComponent<Cube>());
-                float posX = Random.Range(3.38f, -3.79f);
+
+                float posX = -2.5f + cubePlacementOffset * (currentCubeIndex % 5);
                 float posY = 1.8f;
-                float posZ = Random.Range(-2.58f, 5.23f);
+                float posZ = cubePlacementOffset * (currentCubeIndex / 5);
+
                 cube.transform.position = new Vector3(posX, posY, posZ);
+                currentCubeIndex++;
             }
         }
 

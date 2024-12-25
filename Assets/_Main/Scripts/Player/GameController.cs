@@ -22,7 +22,7 @@ namespace dincdev
 
         public void UpdateMoveCount()
         {
-            MoveCountForPlayer--;
+            if (MoveCountForPlayer > 0) MoveCountForPlayer--;
             MoveCountText.text = MoveCountForPlayer.ToString();
             StartCoroutine(WaitForGameEndCondition());
         }
@@ -41,7 +41,7 @@ namespace dincdev
 
         IEnumerator WaitForGameEndCondition()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             CheckWinCondition();
         }
     }

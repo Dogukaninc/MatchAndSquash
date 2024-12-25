@@ -426,7 +426,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 17.45, z: 0}
+  m_LocalPosition: {x: -0.35, y: 17.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -690,12 +690,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1792206665}
-  - {fileID: 1492698202}
-  - {fileID: 867423932}
-  - {fileID: 1548136123}
-  - {fileID: 1287647292}
   - {fileID: 1905822830}
+  - {fileID: 1287647292}
+  - {fileID: 1548136123}
+  - {fileID: 867423932}
+  - {fileID: 1492698202}
+  - {fileID: 1792206665}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1548136123 stripped
@@ -805,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 1823279251306086250, guid: f454fdbfba219cd47930c5707ad6d510,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.05
+      value: -3.55
       objectReference: {fileID: 0}
     - target: {fileID: 1823279251306086250, guid: f454fdbfba219cd47930c5707ad6d510,
         type: 3}
@@ -1177,13 +1177,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 250366063583430153, guid: 6e4b0a198bcf7d94898b99729f05209a,
         type: 3}
+      propertyPath: redCubeCount
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 250366063583430153, guid: 6e4b0a198bcf7d94898b99729f05209a,
+        type: 3}
+      propertyPath: blueCubeCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 250366063583430153, guid: 6e4b0a198bcf7d94898b99729f05209a,
+        type: 3}
       propertyPath: orangeCubeCount
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 250366063583430153, guid: 6e4b0a198bcf7d94898b99729f05209a,
         type: 3}
       propertyPath: placementAreaCount
-      value: 7
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 250366063583430153, guid: 6e4b0a198bcf7d94898b99729f05209a,
+        type: 3}
+      propertyPath: cubePlacementOffset
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 3272700894709201252, guid: 6e4b0a198bcf7d94898b99729f05209a,
         type: 3}
@@ -1261,7 +1276,7 @@ PrefabInstance:
     - target: {fileID: 3895786157304571949, guid: f25d0c3f10bcfb745952e9947abaf9f3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3895786157304571949, guid: f25d0c3f10bcfb745952e9947abaf9f3,
         type: 3}
@@ -1376,6 +1391,11 @@ PrefabInstance:
       propertyPath: <MoveCountText>k__BackingField
       value: 
       objectReference: {fileID: 105206584}
+    - target: {fileID: 4403479913492726567, guid: c7607471750e30e43aebf98151c31c81,
+        type: 3}
+      propertyPath: <MoveCountForPlayer>k__BackingField
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 6543540709923571268, guid: c7607471750e30e43aebf98151c31c81,
         type: 3}
       propertyPath: m_Name
