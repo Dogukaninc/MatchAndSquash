@@ -22,15 +22,15 @@ namespace dincdev
             }
 
             area.IsAreaOccupied = true;
-
+            area.CubeOfArea = cube;
             Sequence seq = DOTween.Sequence();
-            seq.Append(cube.transform.DOJump(area.PlacementPosition.position, 3, 1, 0.5f).OnComplete(() =>
+            seq.Append(cube.transform.DOJump(area.PlacementPosition.position, 3, 1, 0.5f));
+            seq.Join(cube.transform.DORotate(Vector3.up * 180, 0.5f));
+            seq.OnComplete(() =>
             {
                 cube.transform.position = area.PlacementPosition.position;
-                area.CubeOfArea = cube;
                 CheckPlacedCubesToMerge();
-            }));
-            seq.Join(cube.transform.DORotate(Vector3.up * 180, 0.5f));
+            });
         }
 
         private PlacementArea FindAvailableArea()
@@ -38,6 +38,30 @@ namespace dincdev
             var availableArea = PlacementAreas.FirstOrDefault(area => !area.IsAreaOccupied);
             return availableArea;
         }
+
+        public void RePositionCubes()
+        {
+            for (int i = 0; i < PlacementAreas.Count; i++)
+            {
+                var cube = PlacementAreas[i].CubeOfArea;
+                if (cube != null)
+                {
+                    var availableArea = FindAvailableArea();
+                    if (availableArea != null) ResetArea(cube);
+                    cube.transform.DOMove(availableArea.PlacementPosition.position, 0.5f);
+                    availableArea.IsAreaOccupied = true;
+                    availableArea.CubeOfArea = cube;
+                }
+            }
+        }
+
+        private void ResetArea(Cube cube) //TODO küpler merge olduktan sonra areaları temizlemek içinde bunu kullan
+        {
+            var area = PlacementAreas.Find(a => a.CubeOfArea == cube);
+            area.IsAreaOccupied = false;
+            area.CubeOfArea = null;
+        }
+
 
         private void CheckPlacedCubesToMerge()
         {
@@ -61,17 +85,18 @@ namespace dincdev
         private void MatchAnimation(Cube prevCube, Cube cube, Cube nextCube)
         {
             Sequence seq = DOTween.Sequence();
-            seq.Append(prevCube.transform.DOJump(cube.transform.position, 3, 1, 0.5f));
-            seq.Join(nextCube.transform.DOJump(cube.transform.position, 3, 1, 0.5f));
-            seq.Join(prevCube.transform.DOScale(Vector3.one / 3, 0.5f));
+            seq.Append(cube.transform.DOJump(prevCube.transform.position, 3, 1, 0.5f));
+            seq.Join(nextCube.transform.DOJump(prevCube.transform.position, 3, 1, 0.5f));
+            seq.Join(cube.transform.DOScale(Vector3.one / 3, 0.5f));
             seq.Join(nextCube.transform.DOScale(Vector3.one / 3, 0.5f));
             seq.OnComplete(() =>
             {
-                VFXPlayer.Instance.PlayVFX("confetti", cube.transform.position);
-                GameController.Instance.cubesOfLevel.Remove(prevCube);//TODO - Burayı düzelt
+                VFXPlayer.Instance.PlayVFX("confetti", prevCube.transform.position);
+                GameController.Instance.cubesOfLevel.Remove(prevCube); //TODO - Burayı düzelt
                 GameController.Instance.cubesOfLevel.Remove(cube);
                 GameController.Instance.cubesOfLevel.Remove(nextCube);
                 DestroyCubes(prevCube, cube, nextCube);
+                RePositionCubes();
             });
         }
 
