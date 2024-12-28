@@ -805,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 1823279251306086250, guid: f454fdbfba219cd47930c5707ad6d510,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.26
+      value: -2.95
       objectReference: {fileID: 0}
     - target: {fileID: 1823279251306086250, guid: f454fdbfba219cd47930c5707ad6d510,
         type: 3}
@@ -815,7 +815,7 @@ PrefabInstance:
     - target: {fileID: 1823279251306086250, guid: f454fdbfba219cd47930c5707ad6d510,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.63
+      value: 6.43
       objectReference: {fileID: 0}
     - target: {fileID: 1823279251306086250, guid: f454fdbfba219cd47930c5707ad6d510,
         type: 3}
@@ -995,7 +995,17 @@ PrefabInstance:
       objectReference: {fileID: 1878458837350097129}
     - target: {fileID: 3263054857794827876, guid: 3002095177f6a73429c95c49cff84b59,
         type: 3}
+      propertyPath: nextLevelButton
+      value: 
+      objectReference: {fileID: 1878458837350097129}
+    - target: {fileID: 3263054857794827876, guid: 3002095177f6a73429c95c49cff84b59,
+        type: 3}
       propertyPath: RetryLevelButton
+      value: 
+      objectReference: {fileID: 1878458837350097130}
+    - target: {fileID: 3263054857794827876, guid: 3002095177f6a73429c95c49cff84b59,
+        type: 3}
+      propertyPath: retryLevelButton
       value: 
       objectReference: {fileID: 1878458837350097130}
     - target: {fileID: 3263054857794827876, guid: 3002095177f6a73429c95c49cff84b59,
@@ -1175,6 +1185,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1525450413}
     m_Modifications:
+    - target: {fileID: 250366063583430153, guid: 6e4b0a198bcf7d94898b99729f05209a,
+        type: 3}
+      propertyPath: xAxis
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 250366063583430153, guid: 6e4b0a198bcf7d94898b99729f05209a,
+        type: 3}
+      propertyPath: zAxis
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 250366063583430153, guid: 6e4b0a198bcf7d94898b99729f05209a,
         type: 3}
       propertyPath: redCubeCount

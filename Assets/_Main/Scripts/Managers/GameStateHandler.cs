@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using dincdev._Main.Scripts.Operations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,20 +10,20 @@ namespace dincdev
         [field: SerializeField] public GameObject GameWinScreen { get; private set; }
         [field: SerializeField] public GameObject GameLostScreen { get; private set; }
        
-        public Button NextLevelButton;
-        public Button RetryLevelButton;
+        public Button nextLevelButton;
+        public Button retryLevelButton;
 
         public override void Awake()
         {
             base.Awake();
-            NextLevelButton.onClick.AddListener(LoadNextLevel);
-            RetryLevelButton.onClick.AddListener(RestartLevel);
+            nextLevelButton.onClick.AddListener(LoadNextLevel);
+            retryLevelButton.onClick.AddListener(RestartLevel);
         }
 
         private void OnDisable()
         {
-            NextLevelButton.onClick.RemoveListener(LoadNextLevel);
-            RetryLevelButton.onClick.RemoveListener(RestartLevel);
+            nextLevelButton.onClick.RemoveListener(LoadNextLevel);
+            retryLevelButton.onClick.RemoveListener(RestartLevel);
         }
 
         public void GameOver()

@@ -3,14 +3,13 @@ using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 using dincdev._Main.Scripts.Operations;
-using UnityEngine.Rendering;
+using VContainer;
 
 namespace dincdev
 {
     public class PlacementAreaHandler : SingletonMonoBehaviour<PlacementAreaHandler>
     {
         [field: SerializeField] public List<PlacementArea> PlacementAreas { get; private set; }
-
         public void MoveCubeToArea(Cube cube)
         {
             var area = FindAvailableArea();
@@ -61,7 +60,6 @@ namespace dincdev
             area.IsAreaOccupied = false;
             area.CubeOfArea = null;
         }
-
 
         private void CheckPlacedCubesToMerge()
         {

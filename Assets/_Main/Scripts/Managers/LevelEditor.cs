@@ -15,10 +15,16 @@ namespace dincdev
 
         [Header("Cube Counts")]
         [SerializeField] private int redCubeCount;
+
         [SerializeField] private int blueCubeCount;
         [SerializeField] private int orangeCubeCount;
 
         private PlacementAreaHandler _placementAreaHandler;
+
+        [Header("Placement Settings")]
+        [SerializeField] private float xAxis;
+
+        [SerializeField] private float zAxis;
 
         private void Start()
         {
@@ -44,9 +50,9 @@ namespace dincdev
                 var cube = Instantiate(cubePrefabs[prefabIndex], transform.position, Quaternion.identity);
                 GameController.Instance.cubesOfLevel.Add(cube.GetComponent<Cube>());
 
-                float posX = -2.5f + cubePlacementOffset * (currentCubeIndex % 5);
+                float posX = xAxis + cubePlacementOffset * (currentCubeIndex % 5);
                 float posY = 1.8f;
-                float posZ = cubePlacementOffset * (currentCubeIndex / 5);
+                float posZ = zAxis + (cubePlacementOffset * (currentCubeIndex / 5));
 
                 cube.transform.position = new Vector3(posX, posY, posZ);
                 currentCubeIndex++;
